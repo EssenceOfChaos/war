@@ -15,11 +15,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :war, WarWeb.Endpoint,
   load_from_system_env: true,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
   load_from_system_env: true,
   url: [scheme: "https", host: "https://playwar.herokuapp.com/", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
   
  # Configure your database
