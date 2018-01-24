@@ -7,20 +7,32 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello War!</title>
+    <title>Let's Play War!</title>
+    <!-- ## semantic ui CDN below ## -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css" integrity="sha256-/Z28yXtfBv/6/alw+yZuODgTbKZm86IKbPE/5kjO/xY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+    
+<nav class="ui attached inverted stackable menu">
+  <div class="ui container">
+    <a class="item"><i class="home icon"></i> Home</a>
+    <a class="item"><i class="grid layout icon"></i> Browse</a>
+    <a class="item"><i class="mail icon"></i> Messages</a>
+    <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item"><i class="edit icon"></i> Edit Profile</a>
+        <a class="item"><i class="globe icon"></i> Choose Language</a>
+        <a class="item"><i class="settings icon"></i> Account Settings</a>
+      </div>
+    </div>
+    <div class="right item">
+      <div class="ui input"><input type="text" placeholder="Search..."></div>
+    </div>
+  </div>
+</nav>
+<div class="ui container">
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

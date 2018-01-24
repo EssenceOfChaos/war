@@ -17,3 +17,8 @@ config :war, War.Repo,
   database: "war_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+## Config pw hashing when MIX_ENV=TEST
+  config :argon2_elixir,
+  t_cost: 2,
+  m_cost: 12
