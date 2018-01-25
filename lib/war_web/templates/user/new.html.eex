@@ -1,5 +1,8 @@
-<h2>New User</h2>
+<br />
+<div class="ui raised very padded text container segment">
+  <h2 class="ui blue header">Sign up</h2>
+
 
 <%= render "form.html", Map.put(assigns, :action, user_path(@conn, :create)) %>
 
-<span><%= link "Back", to: user_path(@conn, :index) %></span>
+</div>

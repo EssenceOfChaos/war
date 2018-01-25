@@ -40,6 +40,7 @@ defmodule WarWeb do
       import WarWeb.Router.Helpers
       import WarWeb.ErrorHelpers
       import WarWeb.Gettext
+      import War.Accounts.Auth, only: [current_user: 1, logged_in?: 1]
     end
   end
 

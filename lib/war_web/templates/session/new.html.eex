@@ -1,0 +1,43 @@
+<br />
+<div class="ui raised very padded text container segment">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <div class="content">
+        Log in
+      </div>
+    </h2>
+ <%= form_for @conn, session_path(@conn, :create), [name: :session, class: "ui small form"], fn f -> %>
+      <div class="ui stacked segment">
+
+  <div class=" field">
+
+    <div class="ui left icon input">
+      <i class="mail icon"></i>
+      <%= email_input f, :email, class: "form-control", placeholder: "Email", autofocus: "true" %>
+    </div>
+    <%= error_tag f, :email %>
+  </div>
+
+  <div class=" field">
+
+    <div class="ui left icon input">
+      <i class="lock icon"></i>
+      <%= password_input f, :password, class: "form-control", autocomplete: "false", placeholder: "Password" %>
+    </div>
+    <%= error_tag f, :password %>
+  </div>
+
+    <div class="field">
+      <%= submit "Login", class: "ui fluid large teal submit button" %>
+    </div>
+  </div>
+
+      <div class="ui error message"></div>
+
+  <% end %>
+
+    <div class="ui message">
+      Don't have an account yet? <%= link "Sign up", to: user_path(@conn, :new), class: "" %>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,8 @@ defmodule WarWeb.UserController do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
+        |> assign(:current_user, user)
+        |> put_session(:user_id, user.id)
         |> put_flash(:info, "User created successfully.")
         |> redirect(to: user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->

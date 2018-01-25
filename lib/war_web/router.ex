@@ -7,6 +7,7 @@ defmodule WarWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug WarWeb.Plugs.SetUser, repo: War.Repo
   end
 
   pipeline :api do
@@ -14,10 +15,15 @@ defmodule WarWeb.Router do
   end
 
   scope "/", WarWeb do
-    pipe_through :browser # Use the default browser stack
-
+    pipe_through :browser
     get "/", PageController, :index
+    get "/info", PageController, :info
     resources "/users", UserController
+           ## Routes for sessions ##
+  get    "/login",  SessionController, :new
+  post   "/login",  SessionController, :create
+  delete "/logout", SessionController, :delete
+
   end
 
   # Other scopes may use custom stacks.

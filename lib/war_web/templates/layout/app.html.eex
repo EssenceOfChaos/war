@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Frederick John">
 
     <title>Let's Play War!</title>
     <!-- ## semantic ui CDN below ## -->
@@ -14,28 +14,11 @@
   </head>
 
   <body>
-    
-<nav class="ui attached inverted stackable menu">
-  <div class="ui container">
-    <a class="item"><i class="home icon"></i> Home</a>
-    <a class="item"><i class="grid layout icon"></i> Browse</a>
-    <a class="item"><i class="mail icon"></i> Messages</a>
-    <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item"><i class="edit icon"></i> Edit Profile</a>
-        <a class="item"><i class="globe icon"></i> Choose Language</a>
-        <a class="item"><i class="settings icon"></i> Account Settings</a>
-      </div>
-    </div>
-    <div class="right item">
-      <div class="ui input"><input type="text" placeholder="Search..."></div>
-    </div>
-  </div>
-</nav>
-<div class="ui container">
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <%= render "_navigation.html", conn: @conn%>
+    <div class="ui container">
+    <br />
+      <p class="alert ui info message" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert ui error message" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
