@@ -4,7 +4,7 @@ defmodule War.Accounts.Auth do
     """
   alias War.Accounts.{User, Encryption}
   import Ecto.{Query, Changeset}, warn: false
-  import War.Repo
+  alias War.Repo
 
   def login(params, repo) do
     user = repo.get_by(User, email: String.downcase(params["email"]))
@@ -26,7 +26,7 @@ defmodule War.Accounts.Auth do
    ## Helper functions for view
    def current_user(conn) do
     id = Plug.Conn.get_session(conn, :user_id)
-    if id, do: War.Repo.get(User, id)
+    if id, do: Repo.get(User, id)
   end
 
   def logged_in?(conn), do: !!current_user(conn)

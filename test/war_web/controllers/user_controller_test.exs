@@ -3,8 +3,8 @@ defmodule WarWeb.UserControllerTest do
 
   alias War.Accounts
 
-  @create_attrs %{admin: true, email: "some email", password_hash: "some password_hash", rank: 42, username: "some username"}
-  @update_attrs %{admin: false, email: "some updated email", password_hash: "some updated password_hash", rank: 43, username: "some updated username"}
+  @create_attrs %{admin: true, email: "example@aol.com", password_hash: "abc123", rank: 42, username: "GreatName"}
+  @update_attrs %{admin: false, email: "updatedemail@aol.com", password_hash: "abcd1234", rank: 43, username: "OkName"}
   @invalid_attrs %{admin: nil, email: nil, password_hash: nil, rank: nil, username: nil}
 
   def fixture(:user) do
@@ -22,7 +22,7 @@ defmodule WarWeb.UserControllerTest do
   describe "new user" do
     test "renders form", %{conn: conn} do
       conn = get conn, user_path(conn, :new)
-      assert html_response(conn, 200) =~ "New User"
+      assert html_response(conn, 200) =~ "Sign up"
     end
   end
 
@@ -39,7 +39,7 @@ defmodule WarWeb.UserControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post conn, user_path(conn, :create), user: @invalid_attrs
-      assert html_response(conn, 200) =~ "New User"
+      assert html_response(conn, 200) =~ "Sign up"
     end
   end
 
@@ -60,7 +60,7 @@ defmodule WarWeb.UserControllerTest do
       assert redirected_to(conn) == user_path(conn, :show, user)
 
       conn = get conn, user_path(conn, :show, user)
-      assert html_response(conn, 200) =~ "some updated email"
+      assert html_response(conn, 200) =~ "updatedemail@aol.com"
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do

@@ -2,12 +2,13 @@ defmodule War.AccountsTest do
   use War.DataCase
 
   alias War.Accounts
+  import War.Factory
 
   describe "users" do
     alias War.Accounts.User
 
-    @valid_attrs %{admin: true, email: "some email", password_hash: "some password_hash", rank: 42, username: "some username"}
-    @update_attrs %{admin: false, email: "some updated email", password_hash: "some updated password_hash", rank: 43, username: "some updated username"}
+    @valid_attrs %{admin: true, email: "cooldude19@aol.com", password_hash: "abc123", rank: 42, username: "cooldude19"}
+    @update_attrs %{admin: false, email: "different_email@aol.com", password_hash: "secretpass", rank: 43, username: "coolerdude19"}
     @invalid_attrs %{admin: nil, email: nil, password_hash: nil, rank: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -32,10 +33,9 @@ defmodule War.AccountsTest do
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
       assert user.admin == true
-      assert user.email == "some email"
-      assert user.password_hash == "some password_hash"
-      assert user.rank == 42
-      assert user.username == "some username"
+      assert user.email == "cooldude19@aol.com"
+      # assert user.rank == 42
+      assert user.username == "cooldude19"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -47,10 +47,9 @@ defmodule War.AccountsTest do
       assert {:ok, user} = Accounts.update_user(user, @update_attrs)
       assert %User{} = user
       assert user.admin == false
-      assert user.email == "some updated email"
-      assert user.password_hash == "some updated password_hash"
-      assert user.rank == 43
-      assert user.username == "some updated username"
+      assert user.email == "different_email@aol.com"
+      # assert user.rank == 43
+      assert user.username == "coolerdude19"
     end
 
     test "update_user/2 with invalid data returns error changeset" do
