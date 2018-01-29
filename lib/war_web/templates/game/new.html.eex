@@ -1,5 +1,14 @@
-<h2>New Game</h2>
 
-<%= render "form.html", Map.put(assigns, :action, game_path(@conn, :create)) %>
+<div class="ui raised very padded text container segment">
+  <h2 class="ui dividing header">Game in progress</h2>
 
-<span><%= link "Back", to: game_path(@conn, :index) %></span>
+  <%= img_tag "/images/playing_cards/2_of_clubs.png", height: "216", width: "150"%>
+
+  <br>
+  <button class="ui right labeled icon button">
+    <i class="right arrow circle icon"></i>
+    Next card
+  </button>
+</div>
+
+

@@ -10,8 +10,23 @@ defmodule War.Deck do
     def new() do
       for value <- values, suit <- suits do 
         %Card{value: value, suit: suit}
-      end |> Enum.shuffle
+      end 
+      |> Enum.shuffle
+      |> deal()
     end
+
+    def deal(cards) do
+     hand = Enum.take_random(cards, 26)
+            |> Enum.map(&to_tuple/1)
+            hand
+    end
+
+    defp to_tuple(
+    %War.Deck.Card{value: value, suit: suit}
+    ), do: {value, suit}
+
+
+
     # use values 11-14 for Jacks through Aces
     defp values(), do: Enum.to_list(2..14)
     defp suits(), do: [:spades, :clubs, :hearts, :diamonds]

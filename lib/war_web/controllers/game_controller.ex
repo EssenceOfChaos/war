@@ -1,8 +1,9 @@
 defmodule WarWeb.GameController do
   use WarWeb, :controller
-
+  alias War.Repo
   alias War.GamePlay
-  alias War.GamePlay.Game
+  alias War.GamePlay.{Game, Server}
+
 
   def index(conn, _params) do
     games = GamePlay.list_games()
@@ -10,17 +11,27 @@ defmodule WarWeb.GameController do
   end
 
   def new(conn, _params) do
-    changeset = GamePlay.change_game(%Game{})
+    changeset = 
+      conn.assigns[:current_user]
+      |> Ecto.build_assoc(:games)
+      |> GamePlay.change_game()
+      # IO.puts "#### CONN START ####"
+      # IO.inspect conn, pretty: true
+      # IO.puts "#### CONN END ####"
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"game" => game_params}) do
-    case GamePlay.create_game(game_params) do
+    changeset =
+      conn.assigns[:current_user]
+      |> Ecto.build_assoc(:games)
+      |> Game.changeset(game_params)
+    case Repo.insert(changeset) do
       {:ok, game} ->
         conn
         |> put_flash(:info, "Game created successfully.")
         |> redirect(to: game_path(conn, :show, game))
-      {:error, %Ecto.Changeset{} = changeset} ->
+      {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end

@@ -1,2 +1,7 @@
 <br>
 <h2> Hello, im the 'info' action # Page controller </h2>
+<div class="ui grid">
+<div class="five wide column">
+created by <a href="https://github.com/EssenceOfChaos" target="blank">Frederick John</a>
+</div>
+</div>

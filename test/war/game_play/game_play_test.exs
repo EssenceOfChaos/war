@@ -6,8 +6,8 @@ defmodule War.GamePlayTest do
   describe "games" do
     alias War.GamePlay.Game
 
-    @valid_attrs %{status: "initializing", won: true}
-    @update_attrs %{status: "complete", won: false}
+    @valid_attrs %{status: "initializing", won: true, user_id: 2}
+    @update_attrs %{status: "complete", won: false, user_id: 1}
     @invalid_attrs %{status: nil, won: false}
 
     def game_fixture(attrs \\ %{}) do

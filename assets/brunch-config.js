@@ -49,7 +49,7 @@ exports.config = {
             ignore: [/vendor/]
         },
         copycat: {
-            fonts: ["node_modules/font-awesome/fonts"] // copy node_modules/font-awesome/fonts/* to priv/static/fonts/
+            fonts: ["semantic/dist/themes/material/assets/fonts"] // copy to priv/static/fonts/
         },
         sass: {
             options: {

@@ -17,10 +17,6 @@
     <%= @user.admin %>
   </li>
 
-  <li>
-    <strong>Password hash:</strong>
-    <%= @user.password_hash %>
-  </li>
 
   <li>
     <strong>Rank:</strong>
@@ -29,5 +25,10 @@
 
 </ul>
 
-<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: user_path(@conn, :index) %></span>
+
+<div class="ui buttons">
+  <%= link "Edit", to: user_path(@conn, :edit, @user), class: "ui button" %>
+  <div class="or"></div>
+  <%= link "Back", to: user_path(@conn, :index), class: "ui secondary button" %>
+</div>
+
