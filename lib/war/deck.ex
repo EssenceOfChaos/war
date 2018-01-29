@@ -7,12 +7,14 @@ defmodule War.Deck do
       defstruct [:value, :suit]
     end
 
-    def new do
+    def new() do
       for value <- values, suit <- suits do 
         %Card{value: value, suit: suit}
       end |> Enum.shuffle
     end
     # use values 11-14 for Jacks through Aces
-    defp values, do: Enum.to_list(2..14)
-    defp suits, do: [:spades, :clubs, :hearts, :diamonds]
+    defp values(), do: Enum.to_list(2..14)
+    defp suits(), do: [:spades, :clubs, :hearts, :diamonds]
+
+
 end

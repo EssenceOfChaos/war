@@ -1,0 +1,18 @@
+<h2>Show Game</h2>
+
+<ul>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @game.status %>
+  </li>
+
+  <li>
+    <strong>Won:</strong>
+    <%= @game.won %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: game_path(@conn, :edit, @game) %></span>
+<span><%= link "Back", to: game_path(@conn, :index) %></span>

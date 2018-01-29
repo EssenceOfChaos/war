@@ -19,6 +19,7 @@ defmodule WarWeb.Router do
     get "/", PageController, :index
     get "/info", PageController, :info
     resources "/users", UserController
+    resources "/games", GameController
            ## Routes for sessions ##
   get    "/login",  SessionController, :new
   post   "/login",  SessionController, :create

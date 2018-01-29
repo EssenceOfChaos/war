@@ -10,6 +10,7 @@ defmodule War.Accounts.User do
     field :password_hash, :string
     field :rank, :integer
     field :username, :string
+    has_many :games, War.GamePlay.Game
     ## Virtual Fields ##
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
