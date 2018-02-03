@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.13 - Modal
+ * # Semantic UI 2.2.14 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -364,7 +364,9 @@
   position: fixed;
 }
 .modals.dimmer .ui.scrolling.modal {
-  position: static !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
   margin: 3.5rem auto !important;
 }
 

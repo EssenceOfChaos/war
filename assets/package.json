@@ -18,6 +18,6 @@
         "brunch": "2.10.9",
         "clean-css-brunch": "2.10.0",
         "uglify-js-brunch": "2.10.0",
-        "semantic-ui": "^2.2.13"
+        "semantic-ui": "^2.2.14"
     }
 }
