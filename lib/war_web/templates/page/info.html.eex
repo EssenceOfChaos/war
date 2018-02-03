@@ -1,7 +1,15 @@
-<br>
-<h2> Hello, im the 'info' action # Page controller </h2>
+
 <div class="ui grid">
-<div class="five wide column">
-created by <a href="https://github.com/EssenceOfChaos" target="blank">Frederick John</a>
+  <div class="five wide column">
+
+  <h2 class="ui header">
+  <i class="github icon"></i>
+  <div class="content">
+    created by <a href="https://github.com/EssenceOfChaos" target="blank">Frederick John</a>
+    <div class="sub header">Check out other projects on Github</div>
+  </div>
+</h2>
+
+  </div>
 </div>
-</div>
+

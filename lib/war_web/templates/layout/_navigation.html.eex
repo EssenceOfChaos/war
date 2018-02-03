@@ -1,8 +1,8 @@
 <nav class="ui attached inverted stackable menu">
   <div class="ui container">
 
-    <a class="item" href="/"><i class="home icon" ></i> Home</a>
-    <a class="item" href="/info"><i class="info circle icon"></i>Info</a>
+    <a class="item" href="/" id="home"><i class="home icon" ></i> Home</a>
+    <a class="item" href="/info" id="info"><i class="info circle icon"></i>Info</a>
 
     <div class="ui simple dropdown item">Settings<i class="dropdown icon"></i>
       <div class="menu">

@@ -56,8 +56,6 @@ defmodule War.GamePlay.Server do
     {:reply, state, state}
   end
 
-
-
   def handle_cast({:add, item}, list) do
     {:noreply, list ++ [item]}
   end
