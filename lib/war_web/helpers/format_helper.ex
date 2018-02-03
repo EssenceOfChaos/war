@@ -1,10 +1,11 @@
-defmodule WarWeb.FormatHelpers do
+defmodule WarWeb.Helpers.FormatHelper do
     @moduledoc """
       Provides format-related functions.
     """
 
-  def render_card(tuple) when is_tuple(tuple) do
-    
+  def format_card({value, suit}) do
+     "/images/playing_cards/#{value}_of_#{suit}.png"
   end
   
+
 end

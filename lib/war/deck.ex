@@ -8,17 +8,17 @@ defmodule War.Deck do
     end
 
     def new() do
-      for value <- values, suit <- suits do 
+      for value <- values(), suit <- suits() do
         %Card{value: value, suit: suit}
-      end 
+      end
       |> Enum.shuffle
-      |> deal()
+      # |> deal()
     end
 
     def deal(cards) do
      hand = Enum.take_random(cards, 26)
-            |> Enum.map(&to_tuple/1)
-            hand
+     computer = cards -- hand
+    |> Enum.map(&to_tuple/1)
     end
 
     defp to_tuple(

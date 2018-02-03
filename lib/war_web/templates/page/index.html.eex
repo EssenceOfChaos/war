@@ -1,12 +1,14 @@
-<h1>Let's Play War!</h1>
+
+
   <%= if logged_in?(@conn) do %>
     <span><%= link "New Game", to: game_path(@conn, :new), class: "ui big primary button" %></span>
-
-
-
+  <% else %>
+  <h2 class="ui header index">
+    <img src="/images/swords-crossed.png" class="ui image">
+    Log in to play War!
+  </h2>
   <% end %>
 
    <p><%= handler_info @conn %></p>
    <br>
    <hr>
-

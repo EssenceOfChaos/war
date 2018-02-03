@@ -1,14 +1,56 @@
 
 <div class="ui raised very padded text container segment">
-  <h2 class="ui dividing header">Game in progress</h2>
+  <h2 class="ui dividing header">  Game Status: <%= @game.status %>  </h2>
 
-  <%= img_tag "/images/playing_cards/2_of_clubs.png", height: "216", width: "150"%>
+      <div class="ui centered card">
 
-  <br>
-  <button class="ui right labeled icon button">
-    <i class="right arrow circle icon"></i>
-    Next card
-  </button>
+        <div class="content">
+          <img class="right floated small ui image" src="/images/card_designs/sentinel.png">
+          <div class="header">
+            Computer
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="meta">
+            <%= cards_left(@game.computer_cards) %> Cards remaining
+          </div>
+        </div>
+
+
+    </div>
+
+    <div class="ui centered card">
+
+      <div class="content">
+        <img class="right floated small ui image" src="/images/card_designs/sentinel.png">
+        <div class="header">
+          <%= current_user(@conn).username %>
+        </div>
+
+      </div>
+      <div class="extra content">
+
+        <button class="ui right labeled icon button">
+          <i class="right arrow icon"></i>
+          Next card
+        </button>
+
+      </div>
+      <div class="extra content">
+        <div class="meta">
+          <%= cards_left(@game.user_cards) %> Cards remaining
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+
+
+
+
 </div>
-
-
+<hr />
+<hr />

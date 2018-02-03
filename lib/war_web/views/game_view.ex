@@ -1,22 +1,13 @@
 defmodule WarWeb.GameView do
   use WarWeb, :view
-  alias War.GamePlay.Game
-# playing_cards/2_of_clubs.png
+  alias WarWeb.Helpers.FormatHelper
 
-  def render_card_image() do
-    cond do
-      {2, :hearts} ->  "/images/playing_cards/2_of_hearts.png"
-      {3, :hearts} -> "/images/playing_cards/3_of_hearts.png"
-      {4, :hearts} -> "/images/playing_cards/4_of_hearts.png"
-    end
-    
+  def render_card(card) do
+    FormatHelper.format_card(card)
   end
 
-  def next_card(cards) do
-    hd(cards)
+  def cards_left(cards) do
+    length(cards)
   end
-
- 
-  
 
 end

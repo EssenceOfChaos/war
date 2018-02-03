@@ -11,14 +11,15 @@ defmodule WarWeb.GameController do
   end
 
   def new(conn, _params) do
-    changeset = 
+    changeset =
       conn.assigns[:current_user]
       |> Ecto.build_assoc(:games)
       |> GamePlay.change_game()
-      # IO.puts "#### CONN START ####"
-      # IO.inspect conn, pretty: true
-      # IO.puts "#### CONN END ####"
-    render(conn, "new.html", changeset: changeset)
+      War.GamePlay.Game.start_game()
+    game =
+      Server.read(War.GamePlay.Server)
+
+    render(conn, "new.html", changeset: changeset, game: game)
   end
 
   def create(conn, %{"game" => game_params}) do
@@ -35,6 +36,18 @@ defmodule WarWeb.GameController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+
+  # def next_card(cards) do
+  #   {:reply, card, rest} = Server.pop(War.GamePlay.Server)
+  #   card
+  # end
+
+
+
+
+
+
+
 
   def show(conn, %{"id" => id}) do
     game = GamePlay.get_game!(id)

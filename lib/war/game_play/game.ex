@@ -1,7 +1,8 @@
 defmodule War.GamePlay.Game do
   use Ecto.Schema
   import Ecto.Changeset
-  alias War.GamePlay.Game
+  alias War.GamePlay.{Game, Server}
+
 
 
   schema "games" do
@@ -10,6 +11,7 @@ defmodule War.GamePlay.Game do
     belongs_to :user, War.Accounts.User
   ## VIRTUAL FIELDS ##
     field :user_cards, :map, virtual: true
+    field :computer_cards, :map, virtual: true
 
     timestamps()
   end
@@ -23,18 +25,11 @@ defmodule War.GamePlay.Game do
     |> cast(attrs, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> assoc_constraint(:user)
-    start_game(game.id)
   end
 
-  def start_game(id) do
-    # {:ok, pid} = War.GamePlay.Server.start(id)
-    game = %Game
-    { user_cards:  War.Deck.new,
-      status: "in progress",
-      id: id }
+  def start_game() do
+    Server.start()
   end
-
-
 
 
 
