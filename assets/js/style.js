@@ -1,10 +1,10 @@
 // navbar - indicate active page
 document.addEventListener("DOMContentLoaded", function() {
     if (window.location.pathname == "/") {
-        home = document.getElementById("home");
+        let home = document.getElementById("home");
         home.className += " active";
     } else if (window.location.pathname == "/info") {
-        info = document.getElementById("info");
+        let info = document.getElementById("info");
         info.className += " active";
     }
 });

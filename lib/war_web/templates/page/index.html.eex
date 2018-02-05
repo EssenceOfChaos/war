@@ -9,6 +9,4 @@
   </h2>
   <% end %>
 
-   <p><%= handler_info @conn %></p>
-   <br>
-   <hr>
+

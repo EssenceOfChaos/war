@@ -56,6 +56,29 @@ defmodule War.GamePlay.Server do
     {:reply, state, state}
   end
 
+
+  ########################## rewrite below
+  def handle_call({:take_card}, _from, {computer_cards, player_cards}) do
+    compare(computer_cards, player_cards, [])
+    # ...
+  end
+  
+  defp compare([], [], acc), do: :lists.reverse(acc)
+  defp compare([computer_card | computer_cards], [player_card | player_cards], acc)
+      when computer_card > player_card do
+    compare(computer_cards, player_cards, [:computer_wins | acc])
+  end
+  defp compare([computer_card | computer_cards], [player_card | player_cards], acc)
+      when computer_card < player_card do
+    compare(computer_cards, player_cards, [:player_wins | acc])
+  end
+
+  ############################ rewrite above
+
+
+
+
+
   def handle_cast({:add, item}, list) do
     {:noreply, list ++ [item]}
   end

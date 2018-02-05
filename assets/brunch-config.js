@@ -49,7 +49,7 @@ exports.config = {
             ignore: [/vendor/]
         },
         copycat: {
-            fonts: ["semantic/dist/themes/material/assets/fonts"] // copy to priv/static/fonts/
+            fonts: ["node_modules/semantic-ui/dist/themes/material/assets/fonts"] // copy to priv/static/fonts/
         },
         sass: {
             options: {
