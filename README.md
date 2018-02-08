@@ -6,4 +6,8 @@ This is a single person card game created with Elixir/Phoenix. When the app is f
 
 ## Created by Frederick John
 
+
+_Screenshot_
+
+
 ![War Screenshot](https://github.com/EssenceOfChaos/war/blob/master/assets/static/images/war-scrnsht.png)
