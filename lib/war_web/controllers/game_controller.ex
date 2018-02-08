@@ -5,22 +5,59 @@ defmodule WarWeb.GameController do
   alias War.GamePlay.{Game, Server}
 
 
+
+
+
+
+
+
+
   def index(conn, _params) do
     games = GamePlay.list_games()
     render(conn, "index.html", games: games)
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   def new(conn, _params) do
     changeset =
       conn.assigns[:current_user]
       |> Ecto.build_assoc(:games)
       |> GamePlay.change_game()
-      War.GamePlay.Game.start_game()
-    game =
-      Server.read(War.GamePlay.Server)
 
-    render(conn, "new.html", changeset: changeset, game: game)
+
+      War.GamePlay.Game.start_game()
+
+      %War.GamePlay.Game{user_cards: user_hand, computer_cards: comp_hand, status: status} = 
+        Server.read(War.GamePlay.Server)
+
+
+    render(conn, "new.html", changeset: changeset, user_hand: user_hand, comp_hand: comp_hand, status: status)
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   def create(conn, %{"game" => game_params}) do
     changeset =
@@ -37,11 +74,6 @@ defmodule WarWeb.GameController do
     end
   end
 
-  # def next_card(cards) do
-  #   {:reply, card, rest} = Server.pop(War.GamePlay.Server)
-  #   card
-  # end
-
 
 
 
@@ -54,11 +86,24 @@ defmodule WarWeb.GameController do
     render(conn, "show.html", game: game)
   end
 
+
+
+
+
+
+
   def edit(conn, %{"id" => id}) do
     game = GamePlay.get_game!(id)
     changeset = GamePlay.change_game(game)
     render(conn, "edit.html", game: game, changeset: changeset)
   end
+
+
+
+
+
+
+
 
   def update(conn, %{"id" => id, "game" => game_params}) do
     game = GamePlay.get_game!(id)
@@ -73,6 +118,13 @@ defmodule WarWeb.GameController do
     end
   end
 
+
+
+
+
+
+
+
   def delete(conn, %{"id" => id}) do
     game = GamePlay.get_game!(id)
     {:ok, _game} = GamePlay.delete_game(game)
@@ -81,4 +133,12 @@ defmodule WarWeb.GameController do
     |> put_flash(:info, "Game deleted successfully.")
     |> redirect(to: game_path(conn, :index))
   end
+
+
+
+
+
+
+
+
 end

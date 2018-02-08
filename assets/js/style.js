@@ -7,6 +7,27 @@ document.addEventListener("DOMContentLoaded", function() {
         let info = document.getElementById("info");
         info.className += " active";
     }
+
+    $("#progress-bar").progress();
 });
 console.log("baseJS is now executing...");
 console.log("URI path is " + window.location.pathname);
+
+$(".ui.primary.button.load").api("set loading");
+
+/* Define API endpoints once globally */
+// $.fn.api.settings.api = {
+//     "get followers": "/followers/{id}?results={count}",
+//     "create user": "/create",
+//     "add user": "/add/{id}",
+//     "follow user": "/follow/{id}",
+//     search: "/search/?query={value}"
+// };
+
+// // translates '/follow/{id}' to 'follow/22'
+// $(".follow.button").api({
+//     action: "follow user",
+//     urlData: {
+//         id: 22
+//     }
+// });

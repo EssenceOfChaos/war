@@ -36,13 +36,7 @@ defmodule War.GamePlay do
 
   """
   def get_game!(id), do: Repo.get!(Game, id)
-#TODO: Fix
-  # def separate_hands(cards) do
-  #   hands =
-  #     Server.read(War.GamePlay.Server)
-  #     user_hand = hands.user_cards
-  #   end
-  # end
+
 
   @doc """
   Creates a game.

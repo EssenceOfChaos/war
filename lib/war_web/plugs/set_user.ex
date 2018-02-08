@@ -12,7 +12,6 @@ defmodule WarWeb.Plugs.SetUser do
       conn
     else
       user_id = get_session(conn, :user_id)
-
       cond do
         user = user_id && Repo.get(User, user_id) ->
           assign(conn, :current_user, user)
