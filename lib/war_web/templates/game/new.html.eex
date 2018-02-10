@@ -33,7 +33,7 @@
 
       <div class="content">
       <%= img_tag render_card(Enum.at(@user_hand, 0)), class: "right floated small ui image" %>
-      
+
       <%# <img class="right floated small ui image" src="/images/card_designs/sentinel.png"> %>
 
         <div class="header">
@@ -43,10 +43,7 @@
       </div>
       <div class="extra content">
 
-        <button class="ui right labeled icon button">
-          <i class="right arrow icon"></i>
-          Next card
-        </button>
+      <%= link "Next card", to: "/", class: "ui button"%>
 
       </div>
       <div class="extra content">

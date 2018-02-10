@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 // navbar - indicate active page
 document.addEventListener("DOMContentLoaded", function() {
     if (window.location.pathname == "/") {
@@ -13,7 +14,10 @@ document.addEventListener("DOMContentLoaded", function() {
 console.log("baseJS is now executing...");
 console.log("URI path is " + window.location.pathname);
 
-$(".ui.primary.button.load").api("set loading");
+$(document).ready(function() {
+    // create sidebar and attach to menu open
+    $(".ui.sidebar").sidebar("attach events", ".toc.item");
+});
 
 /* Define API endpoints once globally */
 // $.fn.api.settings.api = {

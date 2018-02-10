@@ -1,5 +1,10 @@
-<nav class="ui attached inverted stackable menu">
+
+<!--standard menu -->
+<nav class="ui attached inverted menu">
   <div class="ui container">
+    <a class="toc item">
+    <i class="sidebar icon"></i>
+   </a>
 
     <a class="item" href="/" id="home"><i class="home icon" ></i> Home</a>
     <a class="item" href="/info" id="info"><i class="info circle icon"></i>Info</a>
@@ -33,4 +38,52 @@
   <% end %>
     </div>
   </div>
-</nav>
+</nav> 
+
+ <!-- <div class="ui container">
+<div class="ui large secondary pointing menu">
+  <a class="toc item">
+    <i class="sidebar icon"></i>
+  </a>
+  <a class="item" href="/" id="home">Home</a>
+  <a class="item" href="/info" id="info">Info</a>
+  <div class="ui simple dropdown item">Settings<i class="dropdown icon"></i>
+    <div class="menu">
+      <a class="item"><i class="edit icon"></i> Change Card Design</a>
+      <a class="item"><i class="globe icon"></i> Choose Language</a>
+      <a class="item"><i class="settings icon"></i> Account Settings</a>
+    </div>
+  </div>
+
+   <div class="right item">
+        <%= if logged_in?(@conn) do %>
+        <div class="item">
+         <span class="ui label" id="current_user"><%= current_user(@conn).username %></span>
+         </div>
+         <div class="item">
+         <%= link "Logout", to: session_path(@conn, :delete), method: :delete, class: "ui button" %>
+         </div>
+         <% else %>
+    <%= link "Login",    to: "/login", class: "ui secondary button" %>
+    <%= link "Sign up", to: user_path(@conn, :new), class: "ui primary button" %>
+      <% end %>
+  </div>
+</div>
+</div> -->
+
+<!-- Sidebar Menu -->
+<div class="ui vertical inverted sidebar menu">
+  <a class="item" id="home" href="/">Home</a>
+  <a class="item" id="info" href="/info">Info</a>
+  <%= if logged_in?(@conn) do %>
+  <div class="item">
+   <span class="ui label" id="current_user"><%= current_user(@conn).username %></span>
+   </div>
+   <div class="item">
+   <%= link "Logout", to: session_path(@conn, :delete), method: :delete, class: "ui button" %>
+   </div>
+   <% else %>
+<%= link "Login",    to: "/login", class: "ui secondary button" %>
+<%= link "Sign up", to: user_path(@conn, :new), class: "ui primary button" %>
+<% end %>
+</div>

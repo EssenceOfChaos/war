@@ -12,7 +12,7 @@ defmodule War.Application do
       supervisor(War.Repo, []),
       # Start the endpoint when the application starts
       supervisor(WarWeb.Endpoint, []),
-      # Start your own worker by calling: War.Worker.start_link(arg1, arg2, arg3)
+      supervisor(WarWeb.Presence, []),
       # worker(War.Worker, [arg1, arg2, arg3]),
     ]
 

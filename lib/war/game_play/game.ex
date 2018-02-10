@@ -12,6 +12,7 @@ defmodule War.GamePlay.Game do
   ## VIRTUAL FIELDS ##
     field :user_cards, :map, virtual: true
     field :computer_cards, :map, virtual: true
+    field :discard, :map, virtual: true
 
     timestamps()
   end

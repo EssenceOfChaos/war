@@ -6,7 +6,7 @@
   <% end %>
  <div class="ui stacked segment">
 
- 
+
   <div class=" field"> <!--email address -->
     <%= label f, :username, class: "control-label" %>
     <div class="ui left icon input">
@@ -20,7 +20,7 @@
     <%= label f, :email, class: "control-label" %>
     <div class="ui left icon input">
       <i class="mail icon"></i>
-      <%= email_input f, :email, class: "form-control", placeholder: "email address" %>
+      <%= email_input f, :email, class: "form-control", placeholder: "Email address" %>
     </div>
     <%= error_tag f, :email %>
   </div> <!-- / password -->
@@ -30,7 +30,7 @@
     <%= label f, :password, class: "control-label" %>
     <div class="ui left icon input">
       <i class="lock icon"></i>
-      <%= password_input f, :password, class: "form-control", autocomplete: "false", placeholder: "minimum 6 characters" %>
+      <%= password_input f, :password, class: "form-control", autocomplete: "false", placeholder: "Minimum 6 characters" %>
     </div>
     <%= error_tag f, :password %>
   </div>

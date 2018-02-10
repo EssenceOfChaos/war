@@ -9,8 +9,68 @@
     color: #9f3a5b;
 }
 
-.ui.header.index {}
+.list-unstyled {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
-@media only screen and (min-width: 550px) {}
+.hidden.menu {
+    display: none;
+}
 
-@media only screen and (max-width: 600px) {}
+.masthead .logo.item img {
+    margin-right: 1em;
+}
+
+.ui.vertical.stripe {
+    padding: 8em 0em;
+}
+
+.ui.vertical.stripe h3 {
+    font-size: 2em;
+}
+
+.ui.vertical.stripe p {
+    font-size: 1.33em;
+}
+
+.ui.vertical.stripe .horizontal.divider {
+    margin: 3em 0em;
+}
+
+.quote.stripe.segment {
+    padding: 0em;
+}
+
+.quote.stripe.segment .grid .column {
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+.ui.container .toc.item {
+    display: none;
+}
+
+@media only screen and (max-width: 650px) {
+    .ui.attached.inverted.menu .item {
+        display: none;
+    }
+    body>nav>div>div.right.menu,
+    .ui.container .toc.item {
+        display: block !important;
+    }
+    .ui.footer.segment {
+        margin: 0em 0em 0em;
+        padding: 1em 0em;
+    }
+}
+
+.ui.vertical.menu .item>.label {
+    float: left !important;
+}
+
+body>div.ui.inverted.vertical.footer.segment {
+    padding-top: 25px;
+    // margin-bottom: 15px;
+}

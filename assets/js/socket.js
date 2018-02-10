@@ -1,11 +1,21 @@
-// NOTE: The contents of this file will only be executed if
-// you uncomment its entry in "assets/js/app.js".
+/*jshint esversion: 6 */
 
 // To use Phoenix channels, the first step is to import Socket
 // and connect at the socket path in "lib/web/endpoint.ex":
-import {Socket} from "phoenix"
+import { Socket, Presence } from "phoenix";
 
-let socket = new Socket("/socket", {params: {token: window.userToken}})
+// Socket
+// let user = document.getElementById("current_user").innerText;
+let token = $("meta[name=channel_token]").attr("content");
+let socket = new Socket("/socket", {
+    params: {
+        token: token
+            // user: user
+    },
+    logger: (kind, msg, data) => {
+        console.log(`${kind}: ${msg}`, data);
+    }
+});
 
 // When you connect, you'll often need to authenticate the client.
 // For example, imagine you have an authentication plug, `MyAuth`,
@@ -51,12 +61,45 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
-socket.connect()
+socket.connect();
 
-// Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
+// Presence
+let presences = {};
 
-export default socket
+function renderOnlineUsers(presences) {
+    let response = "";
+
+    Presence.list(presences, (id, { metas: [first, ...rest] }) => {
+        let count = rest.length + 1;
+        response += `
+      <br><strong>${first.username}</strong> (count: ${count})
+      <br>
+      `;
+    });
+
+    document.querySelector("#UserList").innerHTML = response;
+}
+
+// Channel
+let channel = socket.channel("room:lobby", {});
+
+channel
+    .join()
+    .receive("ok", resp => {
+        console.log("Joined successfully", resp);
+    })
+    .receive("error", resp => {
+        console.log("Unable to join", resp);
+    });
+
+channel.on("presence_state", state => {
+    presences = Presence.syncState(presences, state);
+    renderOnlineUsers(presences);
+});
+
+channel.on("presence_diff", diff => {
+    presences = Presence.syncDiff(presences, diff);
+    renderOnlineUsers(presences);
+});
+
+export default socket;

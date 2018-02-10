@@ -1,18 +1,12 @@
 <h2>Show Game</h2>
 
-<ul>
+<span><strong>Game ID: </strong> <%= @game.id %></span><br />
+<span><strong>Game status: </strong><%= @game.status %></span>
 
-  <li>
-    <strong>Status:</strong>
-    <%= @game.status %>
-  </li>
-
-  <li>
-    <strong>Won:</strong>
-    <%= @game.won %>
-  </li>
+<ul id="show-list" data-id = <%= @game.id %>>
 
 </ul>
+
 
 <span><%= link "Edit", to: game_path(@conn, :edit, @game) %></span>
 <span><%= link "Back", to: game_path(@conn, :index) %></span>

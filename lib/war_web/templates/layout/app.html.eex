@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Frederick John">
+    <%= if logged_in?(@conn) do %>
+    <%= tag :meta, name: "channel_token", content: Phoenix.Token.sign(@conn, "user auth", @current_user.id) %>
+    <% else %>
+    <% end %>
 
     <title><%= title() %></title>
     <!-- ## semantic ui CDN below ## -->
@@ -15,6 +19,7 @@
 
   <body>
     <%= render "_navigation.html", conn: @conn%>
+    <div class="pusher">
     <div class="ui container">
     <br />
       <p class="alert ui info message" role="alert"><%= get_flash(@conn, :info) %></p>
@@ -25,6 +30,8 @@
       </main>
 
     </div> <!-- /container -->
+    </div>
+    <%= render "_footer.html", conn: @conn%>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

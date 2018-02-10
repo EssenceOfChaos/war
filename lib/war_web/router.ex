@@ -21,9 +21,12 @@ defmodule WarWeb.Router do
     resources "/users", UserController
     resources "/games", GameController
            ## Routes for sessions ##
-  get    "/login",  SessionController, :new
-  post   "/login",  SessionController, :create
-  delete "/logout", SessionController, :delete
+    get    "/login",  SessionController, :new
+    post   "/login",  SessionController, :create
+    delete "/logout", SessionController, :delete
+
+    ## Routes for game ##
+    get "/battle", GameController, :battle
 
   end
 

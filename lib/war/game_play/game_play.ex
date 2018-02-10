@@ -6,8 +6,7 @@ defmodule War.GamePlay do
   import Ecto.Query, warn: false
   alias War.Repo
 
-  alias War.GamePlay.{Game, Server}
-
+  alias War.GamePlay.{Game}
   @doc """
   Returns the list of games.
 

@@ -10,3 +10,37 @@
   <% end %>
 
 
+    <div class="ui vertical stripe quote segment">
+      <div class="ui equal width stackable internally celled grid">
+        <div class="center aligned row">
+          <div class="column">
+            <h2 class="ui center aligned icon header">
+            <i class="circular users icon"></i>
+             Online Users
+            </h2>
+
+          <ul id="UserList" class="list-unstyled">
+        <li class="text-center"><img src="images/svg-loaders/hourglass_loader.svg" height="30px" width="30px" alt="loading icon"></li>
+          </ul>
+
+          </div>
+          <div class="column">
+            <h3>"Lorem ipsum text here. More informations and details forth width"</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui vertical stripe segment">
+      <div class="ui text container">
+        <h3 class="ui header">Each New Word Gets a Capital Letter.</h3>
+        <p>Continue to use text here of the most interesting content and include useful informations for users for whom this text may be read.</p>
+        <a class="ui large button">Read More</a>
+        <h4 class="ui horizontal header divider">
+          <a href="#">Case Studies</a>
+        </h4>
+        <h3 class="ui header">Did We Tell You About Other Games?</h3>
+        <p> We have, indeed, created other games that you may enjoy playing. Here is some text on the page that will explain such things in more detail.</p>
+        <a class="ui large button">I'm Quite Interested</a>
+      </div>
+    </div>
