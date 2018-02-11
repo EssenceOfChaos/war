@@ -1,12 +1,76 @@
-<h2>Show Game</h2>
+<div class="ui raised padded text container segment">
+<div class="ui dividing header">
+  <h4>  Game Status:   </h4>
 
-<span><strong>Game ID: </strong> <%= @game.id %></span><br />
-<span><strong>Game status: </strong><%= @game.status %></span>
+</div>
+<div class="ui indicating progress" data-value="50" data-total="100" id="progress-bar">
+  <div class="bar">
+    <div class="progress"></div>
+  </div>
+  <div class="label">Game progress</div>
+</div>
 
-<ul id="show-list" data-id = <%= @game.id %>>
+      <div class="ui centered card">
 
-</ul>
+        <div class="content">
+        <%# <%= img_tag render_card(Enum.at(@comp_hand, 0)), class: "right floated small ui image" %> 
+          <img class="right floated small ui image" src="/images/card_designs/sentinel.png">
+          <div class="header">
+            Computer
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="meta">
+            <%= %> Cards remaining
+          </div>
+        </div>
 
 
+    </div>
+
+    <div class="ui centered card">
+
+      <div class="content">
+      <%# <%= img_tag render_card(Enum.at(@user_hand, 0)), class: "right floated small ui image" %> 
+
+      <img class="right floated small ui image" src="/images/card_designs/sentinel.png">
+
+        <div class="header">
+          <%= current_user(@conn).username %>
+        </div>
+
+      </div>
+      <div class="extra content">
+
+      <%= link "Next card", to: "/", class: "ui button"%>
+
+      </div>
+      <div class="extra content">
+        <div class="meta">
+          <%=  %> Cards remaining
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+
+
+
+</div>
+
+
+<%= content_tag :div, id: "show-list", data: [id: @game.id] do %>
+<% end %>
+
+
+
+
+
+<hr>
+<hr>
+<br>
 <span><%= link "Edit", to: game_path(@conn, :edit, @game) %></span>
 <span><%= link "Back", to: game_path(@conn, :index) %></span>

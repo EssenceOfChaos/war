@@ -27,8 +27,6 @@ defmodule War.GamePlay.Server do
  end
 
 
-
-
 # Server Callbacks
 
   def init(:ok) do
@@ -45,10 +43,6 @@ defmodule War.GamePlay.Server do
      computer_cards: comp |> Enum.map(&to_tuple/1),
        }
   end
-
-
-
-
 
 
 # def turn(%{user_cards: []}), do: comp_wins
@@ -73,7 +67,6 @@ defmodule War.GamePlay.Server do
 #             turn(new_state)
 #     end
 # end
-
 
 
 

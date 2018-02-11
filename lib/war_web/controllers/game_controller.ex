@@ -26,11 +26,11 @@ defmodule WarWeb.GameController do
 
 
 
-  def create(conn, %{"game" => game_params}) do
+  def create(conn, _) do
     changeset =
       conn.assigns[:current_user]
       |> Ecto.build_assoc(:games)
-      |> Game.changeset(game_params)
+      # |> Game.changeset(game_params)
     case Repo.insert(changeset) do
       {:ok, game} ->
         conn
@@ -60,7 +60,6 @@ defmodule WarWeb.GameController do
 
     case GamePlay.update_game(game, game_params) do
       {:ok, game} ->
-        WarWeb.GameChannel.broadcast_change(game)
         conn
         |> put_flash(:info, "Game updated successfully.")
         |> redirect(to: game_path(conn, :show, game))
