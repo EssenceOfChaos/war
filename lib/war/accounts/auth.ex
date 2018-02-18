@@ -31,4 +31,6 @@ defmodule War.Accounts.Auth do
 
   def logged_in?(conn), do: !!current_user(conn)
 
+
+
 end

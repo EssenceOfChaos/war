@@ -17,11 +17,10 @@ defmodule WarWeb.GameController do
       |> Ecto.build_assoc(:games)
       |> GamePlay.change_game()
 
-      War.GamePlay.Game.start_game()
-
-      %War.GamePlay.Game{user_cards: user_hand, computer_cards: comp_hand, status: status} =
-        Server.read(War.GamePlay.Server)
-    render(conn, "new.html", changeset: changeset, user_hand: user_hand, comp_hand: comp_hand, status: status)
+      # War.GamePlay.Game.start_game()
+      # %War.GamePlay.Game{user_cards: user_hand, computer_cards: comp_hand, status: status} =
+      #   Server.read(War.GamePlay.Server)
+    render(conn, "new.html", changeset: changeset)
   end
 
 
@@ -31,6 +30,7 @@ defmodule WarWeb.GameController do
       conn.assigns[:current_user]
       |> Ecto.build_assoc(:games)
       # |> Game.changeset(game_params)
+      # IO.inspect conn.assigns[:current_user]
     case Repo.insert(changeset) do
       {:ok, game} ->
         conn

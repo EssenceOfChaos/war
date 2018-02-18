@@ -5,7 +5,7 @@ defmodule WarWeb.GameChannel do
 
 
   def join("games:" <> game_id, _payload, socket) do
-    {:ok, pid} = Server.start
+    {:ok, pid} = Server.start(game_id)
     send self(), {:after_join, pid}
     {:ok, "Joined games:#{game_id}", socket}
   end
@@ -14,10 +14,14 @@ defmodule WarWeb.GameChannel do
     {:reply, {:ok, payload}, socket}
   end
 
+  def handle_in("next_card", payload, socket) do
+    
+  end
+
 
 
   def handle_info({:after_join, pid}, socket) do
-    state = Server.read pid
+    # state = Server.read pid
     broadcast! socket, "Game:started", state
     {:noreply, socket}
   end

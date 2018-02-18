@@ -17,9 +17,6 @@ defmodule WarWeb.RoomChannel do
       username: socket.assigns.current_user.username,
       online_at: :os.system_time(:seconds)
     })
-
-    IO.inspect socket.assigns.current_user.username
-
     push socket, "presence_state", Presence.list(socket)
     {:noreply, socket}
   end

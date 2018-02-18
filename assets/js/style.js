@@ -17,21 +17,13 @@ console.log("URI path is " + window.location.pathname);
 $(document).ready(function() {
     // create sidebar and attach to menu open
     $(".ui.sidebar").sidebar("attach events", ".toc.item");
+    $(".ui.secondary.button").click(function() {
+        console.log("Secondary Button Clicked!");
+    });
 });
 
 /* Define API endpoints once globally */
-// $.fn.api.settings.api = {
-//     "get followers": "/followers/{id}?results={count}",
-//     "create user": "/create",
-//     "add user": "/add/{id}",
-//     "follow user": "/follow/{id}",
-//     search: "/search/?query={value}"
-// };
-
-// // translates '/follow/{id}' to 'follow/22'
-// $(".follow.button").api({
-//     action: "follow user",
-//     urlData: {
-//         id: 22
-//     }
-// });
+$.fn.api.settings.api = {
+    "next card": "/game-in-progress",
+    search: "/search/?query={value}"
+};

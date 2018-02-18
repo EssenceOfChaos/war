@@ -3,16 +3,13 @@ defmodule War.GamePlay.Game do
   import Ecto.Changeset
   alias War.GamePlay.{Game, Server}
 
-
-
   schema "games" do
-    field :status, :string
+    field :status, :string, default: "uninitialized"
     field :won, :boolean, default: false
     belongs_to :user, War.Accounts.User
   ## VIRTUAL FIELDS ##
     field :user_cards, :map, virtual: true
     field :computer_cards, :map, virtual: true
-    field :discard, :map, virtual: true
 
     timestamps()
   end
@@ -26,10 +23,6 @@ defmodule War.GamePlay.Game do
     |> cast(attrs, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> assoc_constraint(:user)
-  end
-
-  def start_game() do
-    Server.start()
   end
 
 

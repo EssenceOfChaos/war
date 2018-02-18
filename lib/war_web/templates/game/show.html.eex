@@ -33,7 +33,7 @@
       <div class="content">
       <%# <%= img_tag render_card(Enum.at(@user_hand, 0)), class: "right floated small ui image" %> 
 
-      <img class="right floated small ui image" src="/images/card_designs/sentinel.png">
+      <img class="right floated small ui image" src="/images/card_designs/sentinel.png" id="user_card">
 
         <div class="header">
           <%= current_user(@conn).username %>
@@ -42,7 +42,7 @@
       </div>
       <div class="extra content">
 
-      <%= link "Next card", to: "/", class: "ui button"%>
+      <button class="ui button" id="next-card">Next Card</button>
 
       </div>
       <div class="extra content">
@@ -62,11 +62,13 @@
 </div>
 
 
-<%= content_tag :div, id: "show-list", data: [id: @game.id] do %>
+<%= content_tag :div, id: "war-game", data: [id: @game.id] do %> 
 <% end %>
 
 
-
+Game status: <%= @game.status %><br>
+Game ID: <%= @game.id %><br>
+Game belongs to user ID: <%= @game.user_id %>
 
 
 <hr>
@@ -74,3 +76,5 @@
 <br>
 <span><%= link "Edit", to: game_path(@conn, :edit, @game) %></span>
 <span><%= link "Back", to: game_path(@conn, :index) %></span>
+
+

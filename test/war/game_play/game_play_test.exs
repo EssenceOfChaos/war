@@ -1,6 +1,7 @@
 defmodule War.GamePlayTest do
   use War.DataCase
 
+
   alias War.GamePlay
 
   describe "games" do
@@ -8,7 +9,7 @@ defmodule War.GamePlayTest do
 
     @valid_attrs %{status: "initializing", won: true, user_id: 2}
     @update_attrs %{status: "complete", won: false, user_id: 1}
-    @invalid_attrs %{status: nil, won: false}
+    @invalid_attrs %{status: nil, user_id: nil}
 
     def game_fixture(attrs \\ %{}) do
       {:ok, game} =
@@ -18,6 +19,9 @@ defmodule War.GamePlayTest do
 
       game
     end
+
+    
+
 
     test "list_games/0 returns all games" do
       game = game_fixture()
@@ -31,7 +35,7 @@ defmodule War.GamePlayTest do
 
     test "create_game/1 with valid data creates a game" do
       assert {:ok, %Game{} = game} = GamePlay.create_game(@valid_attrs)
-      assert game.status == "some status"
+      assert game.status == "initializing"
       assert game.won == true
     end
 
@@ -43,8 +47,8 @@ defmodule War.GamePlayTest do
       game = game_fixture()
       assert {:ok, game} = GamePlay.update_game(game, @update_attrs)
       assert %Game{} = game
-      assert game.status == "some updated status"
-      assert game.won == false
+      assert game.status == "complete"
+
     end
 
     test "update_game/2 with invalid data returns error changeset" do

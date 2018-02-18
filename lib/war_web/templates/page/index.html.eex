@@ -25,7 +25,16 @@
 
           </div>
           <div class="column">
-            <h3>"Lorem ipsum text here. More informations and details forth width"</h3>
+            <h3>View Leaderboard</h3>
+            <p>Check out the best players</p>
+            <a href="/users" class="no-style">
+           <div class="ui animated large button" tabindex="0">
+          <div class="visible content">View Rankings</div>
+          <div class="hidden content">
+            <i class="trophy icon"></i>
+          </div>
+        </div>
+        </a>
           </div>
         </div>
       </div>
@@ -33,8 +42,9 @@
 
     <div class="ui vertical stripe segment">
       <div class="ui text container">
-        <h3 class="ui header">Each New Word Gets a Capital Letter.</h3>
-        <p>Continue to use text here of the most interesting content and include useful informations for users for whom this text may be read.</p>
+        <h3 class="ui header">Why choose Elixir?</h3>
+        <p>Elixir is the best choice for creating scalable and robust applications. Paired with Phoenix, 
+        developers can utilize the latest technologies in creating blazing fast, stateful applications. </p>
         <a class="ui large button">Read More</a>
         <h4 class="ui horizontal header divider">
           <a href="#">Case Studies</a>

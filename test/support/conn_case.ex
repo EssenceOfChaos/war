@@ -20,19 +20,18 @@ defmodule WarWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       import WarWeb.Router.Helpers
-
       # The default endpoint for testing
       @endpoint WarWeb.Endpoint
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(War.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(War.Repo, {:shared, self()})
     end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end
