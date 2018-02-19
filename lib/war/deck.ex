@@ -12,7 +12,6 @@ defmodule War.Deck do
         %Card{value: value, suit: suit}
       end
       |> Enum.shuffle
-      # |> deal()
     end
 
     def deal(cards) do

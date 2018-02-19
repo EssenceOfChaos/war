@@ -1,29 +1,27 @@
 defmodule WarWeb.GameChannel do
   use WarWeb, :channel
-  alias WarWeb.Presence
   alias War.GamePlay.{Server}
 
 
   def join("games:" <> game_id, _payload, socket) do
-    {:ok, pid} = Server.start(game_id)
-    send self(), {:after_join, pid}
-    {:ok, "Joined games:#{game_id}", socket}
+    send(self(), {:after_join, game_id})
+    {:ok, socket}
   end
 
-  def handle_in("hello", payload, socket) do 
-    {:reply, {:ok, payload}, socket}
+
+  def handle_info({:after_join, game_id}, socket) do
+    {:ok, pid} = Server.start(game_id)
+
+    IO.puts "#### INSPECTING SOCKET ####"
+    IO.inspect socket
+    IO.puts "#### END SOCKET INSPECTION ####"
+  
+    {:noreply, socket}
   end
+
 
   def handle_in("next_card", payload, socket) do
     
-  end
-
-
-
-  def handle_info({:after_join, pid}, socket) do
-    # state = Server.read pid
-    broadcast! socket, "Game:started", state
-    {:noreply, socket}
   end
 
   def handle_out(event, payload, socket) do

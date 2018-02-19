@@ -47,7 +47,7 @@
       </div>
       <div class="extra content">
         <div class="meta">
-          <%=  %> Cards remaining
+          <%= %> Cards remaining
         </div>
       </div>
 
@@ -67,8 +67,10 @@
 
 
 Game status: <%= @game.status %><br>
-Game ID: <%= @game.id %><br>
-Game belongs to user ID: <%= @game.user_id %>
+Game id: <%= @game.id %><br>
+Game belongs to user_id: <%= @game.user_id %><br>
+User cards: <%=@game.user_cards%>
+
 
 
 <hr>
