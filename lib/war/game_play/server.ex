@@ -6,7 +6,7 @@ defmodule War.GamePlay.Server do
 
 
 # Client API
-  def start(id) do
+  def start_link(id) do
     GenServer.start_link(__MODULE__, :ok, name: {:global, "game:#{id}"})
   end
 

@@ -27,6 +27,7 @@ defmodule WarWeb.GameController do
 
   def create(conn, _) do
     changeset =
+      
       conn.assigns[:current_user]
       |> Ecto.build_assoc(:games)
       # |> Game.changeset(game_params)

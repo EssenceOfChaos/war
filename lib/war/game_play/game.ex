@@ -25,6 +25,10 @@ defmodule War.GamePlay.Game do
     |> assoc_constraint(:user)
   end
 
+  def new(id) do
+    Server.start_link(id)
+  end
+
 
 
 end
