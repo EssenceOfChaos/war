@@ -1,4 +1,5 @@
-defmodule War.Deck do
+defmodule War.GamePlay.Deck do
+  alias __MODULE__
     @moduledoc """
     Provides a Deck context to hold the Card struct.
     """
@@ -21,7 +22,7 @@ defmodule War.Deck do
     end
 
     defp to_tuple(
-    %War.Deck.Card{value: value, suit: suit}
+    %Deck.Card{value: value, suit: suit}
     ), do: {value, suit}
 
 

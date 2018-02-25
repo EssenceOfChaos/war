@@ -17,23 +17,16 @@ defmodule WarWeb.GameChannel do
 
 
   def handle_info({:after_join, game_id}, socket) do
-    IO.puts "#### INSPECTING SOCKET ####"
-    IO.inspect socket
-    IO.puts "#### END SOCKET INSPECTION ####" 
     {:noreply, socket}
   end
 
 
   def handle_in("next_card", _payload, socket) do
-    Server.battle("game#{socket.assigns.game_id}")
+    IO.puts "#### INSPECTING SOCKET ####"
+    IO.inspect socket
+    IO.puts "#### END SOCKET INSPECTION ####" 
+    {:reply, :ok, socket}
   end
-
-  def handle_out(event, payload, socket) do
-    push socket, event, payload
-    {:noreply, socket}
-  end
-
-
 
 
 end

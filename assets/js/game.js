@@ -23,10 +23,5 @@ $(function() {
       console.log("The 'next card' button has been clicked");
       channel.push("next_card");
     });
-
-    // channel.on("new_msg") => () {
-    //   let user_card = document.getElementById("user_card");
-
-    // });
   }
 });

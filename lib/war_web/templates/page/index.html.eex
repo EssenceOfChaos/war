@@ -29,7 +29,7 @@
             <p>Check out the best players</p>
             <a href="/users" class="no-style">
            <div class="ui animated large button" tabindex="0">
-          <div class="visible content">View Rankings</div>
+          <div class="visible content">Rankings</div>
           <div class="hidden content">
             <i class="trophy icon"></i>
           </div>

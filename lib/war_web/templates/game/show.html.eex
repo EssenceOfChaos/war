@@ -53,23 +53,19 @@
 
   </div>
 
-
-
-
-
-
-
 </div>
 
 
 <%= content_tag :div, id: "war-game", data: [id: @game.id] do %> 
+
 <% end %>
 
-
+<h5>Pulled from Repo</h5>
+<hr>
 Game status: <%= @game.status %><br>
 Game id: <%= @game.id %><br>
 Game belongs to user_id: <%= @game.user_id %><br>
-User cards: <%=@game.user_cards%>
+
 
 
 

@@ -18,4 +18,10 @@ defmodule WarWeb.GameView do
     next
   end
 
+  def user_hand(pid) do
+    %War.GamePlay.Game{user_cards: user_hand} = Server.read(pid)
+    user_hand
+    # in template user_cards and computer_cards are both showing nil!?
+  end
+
 end

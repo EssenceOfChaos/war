@@ -1,8 +1,6 @@
 defmodule War.GamePlay.Server do
   use GenServer
-  alias War.GamePlay.Game
-  alias War.Deck
-
+  alias War.GamePlay.{Game, Deck}
 
 
 # Client API
@@ -12,10 +10,6 @@ defmodule War.GamePlay.Server do
 
  def battle(pid) do
    GenServer.call(pid, :battle)
- end
-
- def take_card(pid) do
-   GenServer.call(pid, {:take_card})
  end
 
  def read(pid) do
@@ -30,7 +24,7 @@ defmodule War.GamePlay.Server do
   end
 
   def load() do
-    deck = Deck.new
+    deck = Deck.new()
     cards = Enum.take_random(deck, 26)
     comp = deck -- cards
    %Game{
@@ -40,16 +34,10 @@ defmodule War.GamePlay.Server do
        }
   end
 
-
-
   defp to_tuple(
-    %War.Deck.Card{value: value, suit: suit}
+    %Deck.Card{value: value, suit: suit}
     ), do: {value, suit}
 
-
-  def handle_call({:take_card}, _from, [card | rest]) do
-    {:reply, card, rest}
-  end
 
   def handle_call(:read, _from, state) do
     {:reply, state, state}
@@ -62,11 +50,20 @@ defmodule War.GamePlay.Server do
       user_cards: []
     } = state
   ) do
-    #user loses logic
-
-    #{:reply, "msg", new_state}
+    new_state = Map.merge(state, %{status: "finished", won: false})
+    {:reply, "User loses", new_state}
   end
 
+  def handle_call(
+    :battle,
+    _from,
+    %Game{
+      computer_cards: []
+    } = state
+  ) do
+   new_state = Map.merge(state, %{status: "finished", won: true})
+    {:reply, "User wins", new_state}
+  end
 
   def handle_call(
     :battle,
@@ -78,7 +75,6 @@ defmodule War.GamePlay.Server do
   ) do
     
     cond do
-
       user_card > computer_card ->
         new_state = Map.merge(state, %{
           user_cards: user_cards_rest ++ [{user_card, user_card_suit}, {computer_card, computer_card_suit}],
@@ -96,7 +92,6 @@ defmodule War.GamePlay.Server do
       user_card == computer_card ->
         # war occurs
  
-   
       new_state = Map.merge(state, %{
         computer_cards: computer_cards_rest,
         user_cards: user_cards_rest
