@@ -22,9 +22,6 @@ defmodule WarWeb.GameChannel do
 
 
   def handle_in("next_card", _payload, socket) do
-    IO.puts "#### INSPECTING SOCKET ####"
-    IO.inspect socket
-    IO.puts "#### END SOCKET INSPECTION ####" 
     {:reply, :ok, socket}
   end
 
