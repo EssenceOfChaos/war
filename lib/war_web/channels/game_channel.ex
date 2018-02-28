@@ -6,13 +6,13 @@ defmodule WarWeb.GameChannel do
 
   def join("games:" <> game_id, _payload, socket) do
     Logger.debug "Joining Game channel #{game_id}", game_id: game_id
-    case War.GamePlay.Game.new(game_id) do
-      {:ok, pid} ->
+    # case War.GamePlay.Game.new(game_id) do
+      # {:ok, pid} ->
         # handle success
         {:ok, assign(socket, :game_id, game_id)}
-      {:error, reason} ->
-        {:error, %{reason: reason}}
-    end
+      # {:error, reason} ->
+      #   {:error, %{reason: reason}}
+    # end
   end
 
 

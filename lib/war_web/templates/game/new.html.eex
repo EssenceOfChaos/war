@@ -1,10 +1,6 @@
 
 <div class="ui raised padded text container segment">
-<div class="ui dividing header">
-  <h4>  Game Status:  <%= @status %> </h4>
-
-</div>
-<div class="ui indicating progress" data-value="50" data-total="100" id="progress-bar">
+<div class="ui indicating progress" data-value="<%= cards_left(@user_hand) %>" data-total="52" id="progress-bar">
   <div class="bar">
     <div class="progress"></div>
   </div>
@@ -14,8 +10,8 @@
       <div class="ui centered card">
 
         <div class="content">
-        <%= img_tag render_card(Enum.at(@comp_hand, 0)), class: "right floated small ui image" %>
-          <%# <img class="right floated small ui image" src="/images/card_designs/sentinel.png"> %>
+        <%= img_tag render_card(Enum.at(@comp_hand, 0)), class: "right floated small ui image" %> 
+         <!-- <img class="right floated small ui image" src="/images/card_designs/sentinel.png"> -->
           <div class="header">
             Computer
           </div>
@@ -32,9 +28,9 @@
     <div class="ui centered card">
 
       <div class="content">
-      <%= img_tag render_card(Enum.at(@user_hand, 0)), class: "right floated small ui image" %>
+      <%= img_tag render_card(Enum.at(@user_hand, 0)), class: "right floated small ui image" %> 
 
-      <%# <img class="right floated small ui image" src="/images/card_designs/sentinel.png"> %>
+      <!--<img class="right floated small ui image" src="/images/card_designs/sentinel.png">-->
 
         <div class="header">
           <%= current_user(@conn).username %>
@@ -43,7 +39,7 @@
       </div>
       <div class="extra content">
 
-      <%= link "Next card", to: "/", class: "ui button"%>
+      <%= link "Next card", to: game_path(@conn, :battle), class: "ui primary fluid button"%>
 
       </div>
       <div class="extra content">
@@ -54,13 +50,3 @@
 
   </div>
 
-
-<%= img_tag render_card(next_card(@user_hand)), class: "ui small image"%>
-
-
-
-
-
-</div>
-<hr />
-<hr />
