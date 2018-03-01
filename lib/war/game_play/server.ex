@@ -3,6 +3,7 @@ defmodule War.GamePlay.Server do
   alias War.GamePlay.{Game, Deck}
 
 @name __MODULE__
+
 # Client API
   def start_link(id) do
     GenServer.start_link(__MODULE__, :ok, name: @name)
@@ -80,23 +81,25 @@ defmodule War.GamePlay.Server do
           user_cards: user_cards_rest ++ [{user_card, user_card_suit}, {computer_card, computer_card_suit}],
           computer_cards: computer_cards_rest
           })
-      {:reply, "User wins", new_state}
+      {:reply, "User wins round!", new_state}
 
       computer_card > user_card ->
         new_state = Map.merge(state, %{
           computer_cards: computer_cards_rest ++ [{user_card, user_card_suit}, {computer_card, computer_card_suit}],
           user_cards: user_cards_rest
         })
-      {:reply, "Computer wins", new_state}
+      {:reply, "Computer wins round!", new_state}
 
       user_card == computer_card ->
         # war occurs
+        # user_war_pile = Enum.take(user_cards, 3)
+        # computer_war_pile = Enum.take(computer_cards, 3)
  
       new_state = Map.merge(state, %{
         computer_cards: computer_cards_rest,
-        user_cards: user_cards_rest
+        user_cards: user_cards_rest ++ [{user_card, user_card_suit}, {computer_card, computer_card_suit}]
       })
-        {:reply, "War occurs", new_state}
+        {:reply, "War occurs!", new_state}
     end
   end
 

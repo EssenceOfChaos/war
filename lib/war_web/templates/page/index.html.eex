@@ -1,7 +1,11 @@
 
 
   <%= if logged_in?(@conn) do %>
-    <span><%= link "New Game", to: game_path(@conn, :new), method: :get, class: "ui big primary button" %></span>
+  <div class="ui block header">
+  <h1>Ready for War!? </h1>
+  <br />
+      <span><%= link "New Game", to: game_path(@conn, :new), method: :get, class: "ui big primary button" %></span>
+</div>
   <% else %>
   <h2 class="ui header index">
     <img src="/images/swords-crossed.png" class="ui image">
@@ -45,12 +49,12 @@
         <h3 class="ui header">Why choose Elixir?</h3>
         <p>Elixir is the best choice for creating scalable and robust applications. Paired with Phoenix, 
         developers can utilize the latest technologies in creating blazing fast, stateful applications. </p>
-        <a class="ui large button">Read More</a>
+        <a class="ui large button" href="https://elixir-lang.org/" target="blank">Read More</a>
         <h4 class="ui horizontal header divider">
-          <a href="#">Case Studies</a>
+          <a href="https://elixir-lang.org/docs.html" target="blank">Case Studies</a>
         </h4>
         <h3 class="ui header">Did We Tell You About Other Games?</h3>
-        <p> We have, indeed, created other games that you may enjoy playing. Here is some text on the page that will explain such things in more detail.</p>
-        <a class="ui large button">I'm Quite Interested</a>
+        <p>I have, indeed, created other games that you may enjoy playing. Check out my Github blog for more information.</p>
+        <a class="ui large button" target="_blank" href="https://github.com/EssenceOfChaos/essenceofchaos.github.io">I'm Quite Interested</a>
       </div>
     </div>

@@ -31,19 +31,19 @@ defmodule WarWeb.GameController do
 
   def battle(conn, _params) do
     case Server.battle(War.GamePlay.Server) do
-    "Computer wins" ->
+    "Computer wins round!" ->
         %Game{user_cards: user_hand, computer_cards: comp_hand, status: status} =
         Server.read(War.GamePlay.Server)
         conn
         |> put_flash(:error, "Computer wins round")
         |> render("new.html", user_hand: user_hand, comp_hand: comp_hand, status: status)
-      "User wins" ->
+      "User wins round!" ->
           %Game{user_cards: user_hand, computer_cards: comp_hand, status: status} =
         Server.read(War.GamePlay.Server)
         conn
         |> put_flash(:info, "User wins round")
         |> render("new.html", user_hand: user_hand, comp_hand: comp_hand, status: status)
-      "War occurs" ->
+      "War occurs!" ->
         %Game{user_cards: user_hand, computer_cards: comp_hand, status: status} =
         Server.read(War.GamePlay.Server)
         conn
