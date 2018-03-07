@@ -1,18 +1,11 @@
 
 
-  <%= if logged_in?(@conn) do %>
+
   <div class="ui block header">
   <h1>Ready for War!? </h1>
   <br />
       <span><%= link "New Game", to: game_path(@conn, :new), method: :get, class: "ui big primary button" %></span>
 </div>
-  <% else %>
-  <h2 class="ui header index">
-    <img src="/images/swords-crossed.png" class="ui image">
-    Log in to play War!
-  </h2>
-  <% end %>
-
 
     <div class="ui vertical stripe quote segment">
       <div class="ui equal width stackable internally celled grid">
