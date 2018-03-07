@@ -21,7 +21,7 @@ defmodule WarWeb.UserController do
         |> assign(:current_user, user)
         |> put_session(:user_id, user.id)
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: page_path(conn, :index)
+        |> redirect(to: page_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
